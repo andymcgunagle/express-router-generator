@@ -1,5 +1,7 @@
 import fs from 'fs/promises';
 
+// NOTE: No longer using this function.
+
 const createNewDirectory = async (newDirName = 'newDir') => {
   const currentWorkingDirectory = process.cwd();
 

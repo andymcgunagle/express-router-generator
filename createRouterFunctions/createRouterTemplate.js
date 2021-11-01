@@ -19,7 +19,7 @@ export const createRouterTemplate = (template) => {
 
   return (
     `import express from 'express';\n\n` +
-    `const ${camelCasedRouterName}Router = express.Router();\n\n` +
+    `const ${camelCasedRouterName} = express.Router();\n\n` +
     `${postRouteName !== undefined ? postRouteName : ''}\n\n` +
     `${additionalPostRouteName !== undefined ? `${additionalPostRouteName}\n\n` : ''}` +
     `${getRouteName !== undefined ? getRouteName : ''}\n\n` +
@@ -28,7 +28,7 @@ export const createRouterTemplate = (template) => {
     `${additionalPutRouteName !== undefined ? `${additionalPutRouteName}\n\n` : ''}` +
     `${deleteRouteName !== undefined ? deleteRouteName : ''}\n\n` +
     `${additionalDeleteRouteName !== undefined ? `${additionalDeleteRouteName}\n\n` : ''}` +
-    `export default ${camelCasedRouterName}Router;`
+    `export default ${camelCasedRouterName};`
   );
 };
 

@@ -1,7 +1,7 @@
-import writeNewRouterToNewFile from "./createRouterFunctions/writeNewRouterToNewFile.js";
+import createNewRouter from "./createRouterFunctions/createNewRouter.js";
 
 const expressRouterGenerator = {
-  writeNewRouterToNewFile,
+  createNewRouter,
 };
 
 export default expressRouterGenerator;
