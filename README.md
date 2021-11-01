@@ -47,7 +47,7 @@ createNewRouter(template, 'userRouter');
 
 The createNewRouter method generates a new file with the Express router and specified routes. It will be written to the directory you're currently running the createNewRouter method from.
 
-Also, the promise returned by "await fs.writeFile" within this method is returned by the method and resolved with no arguments upon success. You're not required to do anything the the promise that's returned.
+Also, the promise returned by "await fs.writeFile" within this method is returned by the method and resolved with no arguments upon success. You're not required to do anything with the promise that's returned.
 
 ## template parameter properties
 
