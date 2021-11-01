@@ -12,7 +12,9 @@ Creates a new file with an Express router including the routes you specify
 
 ### createNewRouter method parameters
 
-1. template: An object with the names of the routes you'd like to include in the new router. Additional details regarding the template parameter's properties can be found below in the [template parameter properties](#template-parameter-properties) section.
+1. #### template
+
+An object with the names of the routes you'd like to include in the new router. Additional details regarding the template parameter's properties can be found below in the [template parameter properties](#template-parameter-properties) section.
 
 ```javascript
 export const template = {
@@ -41,7 +43,9 @@ export const template = {
 createNewRouter(template, 'userRouter');
 ```
 
-2. newFileName: Optional parameter for the name of the new file to be generated. If no argument is given, the new file will have the name `newRouter(a random number between 1 and 10,000).js`.
+2. #### newFileName
+
+Optional parameter for the name of the new file to be generated. If no argument is given, the new file will have the name `newRouter(a random number between 1 and 10,000).js`.
 
 ### createNewRouter method return value
 
