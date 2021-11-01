@@ -51,7 +51,7 @@ The createNewRouter method generates a new file with the Express router and spec
 
 - `template.routerName`: The name of the new router.
 
-- `template.useStandardNames`: Instead of writing route names, you can set this property to true to create a router with post, get, put, and delete routes that use use the standard route names (`post-${routerName}`, `get-${routerName}`, `update-${routerName}`, and `delete-${routerName})`. If this is set to true, any route property names you define in this template object will be ignored.
+- `template.useStandardNames`: Instead of writing route names, you can set this property to true to create a router with post, get, put, and delete routes that use use the standard route names (`post-${routerName}`, `get-${routerName}`, `update-${routerName}`, and `delete-${routerName}`). If this is set to true, any route property names you define in this template object will be ignored.
 
 - `template.postRouteName`: The name of the post route in the new router.
 
@@ -71,7 +71,7 @@ The createNewRouter method generates a new file with the Express router and spec
 
 ## Example output
 
-Let's say we have the following in `createNewRouters.js`:
+Let's say we have the following in **createNewRouters.js**:
 
 ```javascript
 import expressRouterGenerator from 'express-router-generator';
@@ -91,7 +91,7 @@ export const template = {
 expressRouterGenerator.createNewRouter(template, 'myNewRouter');
 ```
 
-Running `node createNewRouters.js` would create a new file called `myNewRouter.js` containing the following:
+Running `node createNewRouters.js` would create a new file called **myNewRouter.js** containing the following:
 
 ```javascript
 import express from 'express';
