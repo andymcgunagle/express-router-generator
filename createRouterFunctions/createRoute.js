@@ -7,16 +7,15 @@ const createRoute = (routerName, routeNameKey, routeName) => {
   const camelCasedRouterName = convertToCamelCase(routerName);
 
   return (
-    `// @route ${routeType.toUpperCase()} /api/${routerName}/${routeName}
-// @desc 
-// @access
-${camelCasedRouterName}Router.${routeType}('/${routeName}', (req, res) => {
-  try {
-
-  } catch (error) {
-    console.error(error);
-  };
-});`
+    `// @route ${routeType.toUpperCase()} /api/${routerName}/${routeName}` +
+    `// @desc` +
+    `// @access` +
+    `${camelCasedRouterName}Router.${routeType}('/${routeName}', (req, res) => {` +
+    `  try {` +
+    `  } catch (error) {` +
+    `    console.error(error);` +
+    `  };` +
+    `});`
   );
 };
 

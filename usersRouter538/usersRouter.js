@@ -1,4 +1,5 @@
 import express from 'express';
+import User from './user.js';
 
 const usersRouter = express.Router();
 
@@ -6,10 +7,22 @@ const usersRouter = express.Router();
 // @desc 
 // @access
 usersRouter.post('/add-new-user', (req, res) => {
-  try {
+  const {
+    // Add relevant user data
+  } = req.body;
 
+  try {
+    let user = new User({
+      // Add relevant user data
+    });
+
+    user.save();
+
+    res.statusCode(200).send(user);
   } catch (error) {
     console.error(error);
+
+    res.statusCode(400).send(error);
   };
 });
 
@@ -17,10 +30,16 @@ usersRouter.post('/add-new-user', (req, res) => {
 // @desc 
 // @access
 usersRouter.get('/get-user', (req, res) => {
-  try {
+  const id = req.body.id;
 
+  try {
+    const user = await User.findById(id);
+
+    res.statusCode(200).send(user);
   } catch (error) {
     console.error(error);
+
+    res.statusCode(400).send(error);
   };
 });
 
@@ -28,10 +47,19 @@ usersRouter.get('/get-user', (req, res) => {
 // @desc 
 // @access
 usersRouter.put('/update-user', (req, res) => {
-  try {
+  const {
+    id,
+    // Add relevant user data
+  } = req.body;
 
+  try {
+    const user = await User.findByIdAndUpdate(id, update, { new: true });
+
+    res.statusCode(200).send(user);
   } catch (error) {
     console.error(error);
+
+    res.statusCode(400).send(error);
   };
 });
 
@@ -39,10 +67,16 @@ usersRouter.put('/update-user', (req, res) => {
 // @desc 
 // @access
 usersRouter.delete('/delete-user', (req, res) => {
-  try {
+  const id = req.body.id;
 
+  try {
+    const user = await User.findByIdAndDelete(id);
+
+    res.statusCode(200).send(user);
   } catch (error) {
     console.error(error);
+
+    res.statusCode(400).send(error);
   };
 });
 
