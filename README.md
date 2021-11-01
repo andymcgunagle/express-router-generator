@@ -45,7 +45,9 @@ createNewRouter(template, 'userRouter');
 
 ### createNewRouter method return value
 
-The createNewRouter method generates a new file with the Express router and specified routes, which will be written to your project's home directory. Also, the promise returned by "await fs.writeFile" within this method is returned by the method and resolved with no arguments upon success.
+The createNewRouter method generates a new file with the Express router and specified routes. It will be written to the directory you're currently running the createNewRouter method from.
+
+Also, the promise returned by "await fs.writeFile" within this method is returned by the method and resolved with no arguments upon success. You're not required to do anything the the promise that's returned.
 
 ## template parameter properties
 
@@ -179,4 +181,14 @@ myRouter.delete('/my-additional-delete-route', (req, res) => {
 });
 
 export default myRouter;
+```
+
+## ES modules
+
+If you get an error using the import-export syntax for ES modules in the examples above, add the following to your package.json file:
+
+```json
+{
+  "type": "module"
+}
 ```
