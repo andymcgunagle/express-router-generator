@@ -1,6 +1,6 @@
 {
   "name": "express-router-generator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "One method to help you quickly a new file containing a template for an Express router",
   "main": "index.js",
   "type": "module",
