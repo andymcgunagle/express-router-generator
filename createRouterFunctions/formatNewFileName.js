@@ -4,7 +4,7 @@ const formatNewFileName = (newFileName) => {
     newFileName = `newRouter${randomNum}.js`;
   };
 
-  if (!newFileName.includes('.js') || !newFileName.includes('.ts')) {
+  if (!newFileName.includes('.js') && !newFileName.includes('.ts')) {
     newFileName = `${newFileName}.js`;
   };
 

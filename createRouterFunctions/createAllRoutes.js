@@ -12,16 +12,24 @@ const createAllRoutes = (template) => {
     deleteRouteName: `delete-${routerName}`,
   };
 
+  // Setting 'enumerable: false' ensures this property does not show up during enumeration of the properties on the corresponding object
+  Object.defineProperty(template, 'routerName', {
+    enumerable: false,
+  });
+
+  // Setting 'enumerable: false' ensures this property does not show up during enumeration of the properties on the corresponding object
+  Object.defineProperty(standardNames, 'routerName', {
+    enumerable: false,
+  });
+
   if (useStandardNames && template['useStandardNames'] !== undefined) {
     for (const name in standardNames) {
-      if (name !== 'routerName') {
-        const routeNameKey = `${name}`;
-        const routeName = `${standardNames[name]}`;
+      const routeNameKey = `${name}`;
+      const routeName = `${standardNames[name]}`;
 
-        const route = createRoute(routerName, routeNameKey, routeName);
+      const route = createRoute(routerName, routeNameKey, routeName);
 
-        standardNames[name] = route;
-      };
+      standardNames[name] = route;
     };
 
     return standardNames;
@@ -29,14 +37,12 @@ const createAllRoutes = (template) => {
 
   if (!useStandardNames || template['useStandardNames'] === undefined) {
     for (const property in template) {
-      if (property !== 'routerName' && property !== 'useStandardNames' && template[property] !== undefined) {
-        const routeNameKey = `${property}`;
-        const routeName = `${template[property]}`;
+      const routeNameKey = `${property}`;
+      const routeName = `${template[property]}`;
 
-        const route = createRoute(routerName, routeNameKey, routeName);
+      const route = createRoute(routerName, routeNameKey, routeName);
 
-        template[property] = route;
-      };
+      template[property] = route;
     };
 
     return template;

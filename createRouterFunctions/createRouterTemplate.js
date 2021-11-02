@@ -1,6 +1,5 @@
 import createAllRoutes from './createAllRoutes.js';
 import convertToCamelCase from './convertToCamelCase.js';
-import { template1, template2 } from './templates.js';
 
 export const createRouterTemplate = (template) => {
   const {
@@ -31,9 +30,5 @@ export const createRouterTemplate = (template) => {
     `export default ${camelCasedRouterName};`
   );
 };
-
-// TESTS
-// console.log(createRouterTemplate(template1));
-// console.log(createRouterTemplate(template2));
 
 export default createRouterTemplate;
