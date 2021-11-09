@@ -2,14 +2,23 @@ import createRoute from './createRoute.js';
 
 const createAllRoutes = (template) => {
   const routerName = `${template['routerName']}`;
-  const useStandardNames = `${template['useStandardNames']}`;
+  const useGenericNames = `${template['useGenericNames']}`;
+  const useIdParams = `${template['useIdParams']}`;
 
-  const standardNames = {
+  const genericNames = {
     routerName,
     postRouteName: `post-${routerName}`,
     getRouteName: `get-${routerName}`,
     putRouteName: `update-${routerName}`,
     deleteRouteName: `delete-${routerName}`,
+  };
+
+  const routesWithIdParams = {
+    routerName,
+    postRouteName: ``,
+    getRouteName: `:Id`,
+    putRouteName: `:Id`,
+    deleteRouteName: `:Id`,
   };
 
   // Setting 'enumerable: false' ensures this property does not show up during enumeration of the properties on the corresponding object
@@ -18,24 +27,42 @@ const createAllRoutes = (template) => {
   });
 
   // Setting 'enumerable: false' ensures this property does not show up during enumeration of the properties on the corresponding object
-  Object.defineProperty(standardNames, 'routerName', {
+  Object.defineProperty(genericNames, 'routerName', {
     enumerable: false,
   });
 
-  if (useStandardNames && template['useStandardNames'] !== undefined) {
-    for (const name in standardNames) {
+  // Setting 'enumerable: false' ensures this property does not show up during enumeration of the properties on the corresponding object
+  Object.defineProperty(routesWithIdParams, 'routerName', {
+    enumerable: false,
+  });
+
+  if (useGenericNames && template['useGenericNames'] !== undefined) {
+    for (const name in genericNames) {
       const routeNameKey = `${name}`;
-      const routeName = `${standardNames[name]}`;
+      const routeName = `${genericNames[name]}`;
 
       const route = createRoute(routerName, routeNameKey, routeName);
 
-      standardNames[name] = route;
+      genericNames[name] = route;
     };
 
-    return standardNames;
+    return genericNames;
   };
 
-  if (!useStandardNames || template['useStandardNames'] === undefined) {
+  if (useIdParams && template['useIdParams'] !== undefined) {
+    for (const name in routesWithIdParams) {
+      const routeNameKey = `${name}`;
+      const routeName = `${routesWithIdParams[name]}`;
+
+      const route = createRoute(routerName, routeNameKey, routeName);
+
+      routesWithIdParams[name] = route;
+    };
+
+    return routesWithIdParams;
+  };
+
+  if (!useGenericNames || template['useGenericNames'] === undefined) {
     for (const property in template) {
       const routeNameKey = `${property}`;
       const routeName = `${template[property]}`;
